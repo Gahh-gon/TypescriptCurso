@@ -22,13 +22,23 @@ class Conta {
              return this.saldo
          }
          protected deposito(valor:number):void{
+            if(valor < 0){
+                console.log('Valor Inválido')
+                return
+            }
             this.saldo += valor
          }
          protected saque(valor:number):void{
-            if(valor >= this.saldo){
-                  this.saldo -= valor
+            if(valor < 0){
+                console.log('Valor Inválido')
+                return
             }
-            console.log(`Saldo insuficiente: ${this.saldo}`)
+            if(valor <= this.saldo){
+                  this.saldo -= valor
+            }else{
+                console.log(`Saldo insuficiente: ${this.saldo}`)
+            }
+           
           
          }
 }
@@ -42,18 +52,26 @@ this.cpf = cpf
 
 
 }
-info(){
+public info(){
     console.log(`Tipo......PF`)
     super.info()
     console.log(`CPF.....${this.cpf}`)
     console.log('--------------------------------------')
 }
-deposito(valor:number):void{
-    if(valor >= 1000){
+public deposito(valor:number):void{
+    if(valor > 1000){
         console.log('Valor de deposito muito alto para esse tipo de conta')
     }else{
        super.deposito(valor) 
     }  
+}
+public saque(valor:number):void{
+    if(valor >10000){
+       console.log('Valor de saque muito grande para esse tipo de conta')
+    } else{
+       super.saque(valor) 
+    }
+    
 }
 }
 
@@ -67,18 +85,26 @@ constructor(cnpj:number,titular:string){
    
     
 }
-info(){
+public info(){
     console.log(`Tipo......PJ`)
     super.info()
     console.log(`CNPJ.....${this.cnpj}`)
     console.log('--------------------------------------')
 }
-deposito(valor:number):void{
-    if(valor >= 10000){
+public deposito(valor:number):void{
+    if(valor > 10000){
         console.log('Valor de deposito muito alto para esse tipo de conta')
     }else{
        super.deposito(valor) 
     }  
+}
+public saque(valor:number):void{
+    if(valor >10000){
+       console.log('Valor de saque muito grande para esse tipo de conta')
+    } else{
+       super.saque(valor) 
+    }
+    
 }
 }
 
@@ -91,4 +117,8 @@ const titular2 = new ContaPJ(505,'Error')
 titular1.deposito(800)
 titular1.deposito(20)
 titular1.deposito(900)
+titular1.saque(1000)
+titular1.saque(700)
+titular1.saque(20)
+titular1.saque(100)
 console.log(titular1.saldoConta())
