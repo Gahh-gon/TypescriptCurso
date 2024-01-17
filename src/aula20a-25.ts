@@ -18,8 +18,11 @@ class Conta {
         console.log(`Numero: ${this.numero}`)
       
         }
-        public saldoConta():number{
+    public get saldoConta():number{//Getter
              return this.saldo
+         }
+       private  set SetSaldoConta(ValSaldoConta:number){//Setter
+            this.saldo = ValSaldoConta
          }
          protected deposito(valor:number):void{
             if(valor < 0){
@@ -117,8 +120,9 @@ const titular2 = new ContaPJ(505,'Error')
 titular1.deposito(800)
 titular1.deposito(20)
 titular1.deposito(900)
-titular1.saque(1000)
-titular1.saque(700)
-titular1.saque(20)
-titular1.saque(100)
-console.log(titular1.saldoConta())
+// titular1.saque(1000)
+// titular1.saque(700)
+// titular1.saque(20)
+// titular1.saque(100)
+// titular1.SetSaldoConta = 150
+console.log(titular1.saldoConta)
