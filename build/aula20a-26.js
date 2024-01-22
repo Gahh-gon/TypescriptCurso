@@ -43,9 +43,14 @@ class Conta {
 }
 class ContaPF extends Conta {
     cpf;
+    taxaCalculo;
     constructor(cpf, titular) {
         super(titular);
         this.cpf = cpf;
+        this.taxaCalculo = 10;
+    }
+    CalcularTrib(valor) {
+        return valor * this.taxaCalculo;
     }
     info() {
         console.log(`Tipo......PF`);

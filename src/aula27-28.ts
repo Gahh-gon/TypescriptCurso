@@ -1,13 +1,23 @@
 interface curso{
 titulo:string;
 des:string;
-aula:number;
-maximoAlunos?:number
+iniciarCurso?(teste:string):void;
 }
+interface cursoProg extends curso{
+    aula:number;
+    maximoAlunos?:number;
+}
+interface cursoArtes extends curso{
+    aula:number;
+    maximoAlunos?:number;
+}
+let curso1:cursoProg
+let curso2:cursoProg
+let curso3:cursoArtes
 
-let curso1:curso
-let curso2:curso
-let curso3:curso
+function iniciarCurso(s:string):void{
+console.log('teste')
+}
 
 curso1={
     titulo: 'Typescript',
@@ -27,6 +37,6 @@ curso3={
     aula:200,
   }
 console.log( curso1);
-console.log(curso2);
+console.log(curso2);''
 console.log(curso3);
 
